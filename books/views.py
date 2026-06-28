@@ -13,18 +13,32 @@ class BookListApiView(generics.ListCreateAPIView):
     serializer_class = BookSerializer
 
 
-# get one item from all
+# get one item from all => retriveapi shu uchun ishlatiladi
 class BookDetailApiView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-#  Delete book
+#  Delete book => destroy api delete uchun ishlatiladi
 class BookDeleteApiView(generics.DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
 #  Update book
 class BookUpdateApiView(generics.UpdateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+# Create book
+class BookCreateApiView(generics.CreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+class BookUpdateDeleteApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+# Create book list
+class BookListCreateApiView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
