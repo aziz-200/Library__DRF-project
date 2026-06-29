@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure-0@(&yy1i4d6%+oy8elra#!p^lbq%u_@&sgbvcdqsiv^w@$ig+h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ "librarydrf-project-production.up.railway.app",
+    "localhost",
+    "127.0.0.1",] # for only railway
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://librarydrf-project-production.up.railway.app",
+]
 
 
 # Application definition
@@ -149,3 +155,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # new added
 SITE_ID = 1 # new added
+
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# settings.py
+DEBUG = os.environ.get("DEBUG", "False") == "True"
