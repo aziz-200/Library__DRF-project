@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites', # new added
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,7 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Packages
     'rest_framework',
+    'rest_framework.authtoken',
     'drf_yasg',
+    'dj_rest_auth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount', # for gmail, facebook etc
+    'dj_rest_auth.registration',
 
     # Local apps
     'books',
@@ -53,9 +60,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # new added
+    'allauth.account.middleware.AccountMiddleware', # this
 ]
 
 ROOT_URLCONF = 'library_project.urls'
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 
 TEMPLATES = [
     {
@@ -122,3 +141,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # new added
+SITE_ID = 1 # new added

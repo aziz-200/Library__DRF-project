@@ -7,6 +7,9 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 drf-yasg = "*"
+drf-rest-auth = "*"
+dj-rest-auth = "*"
+django-allauth = "*"
 
 [dev-packages]
 
