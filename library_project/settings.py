@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount', # for gmail, facebook etc
     'dj_rest_auth.registration',
+    # for deployment UI
     'whitenoise.runserver_nostatic',
 
     # Local apps
