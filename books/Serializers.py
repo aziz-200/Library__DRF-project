@@ -8,3 +8,10 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
 
         fields = ('id', 'title', 'subtitle', 'content', 'author', 'isbn',  'price', )
+
+
+# Serializer orqali yozish, manual writting => and without meta class ,
+# va modelga asoslanmagan holatlarda yozish tavsiya etiladi
+# class BookSerializer(serializers.Serializer):
+#     title = serializers.CharField(max_length=200)
+#     subtitle = serializers.CharField(max_length=200)

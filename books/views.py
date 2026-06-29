@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from .models import Book
 from .Serializers import BookSerializer
 from rest_framework import generics, status
@@ -13,6 +12,7 @@ from rest_framework import generics, status
 # class BookListApiView(generics.ListCreateAPIView):
 #     queryset = Book.objects.all()
 #     serializer_class = BookSerializer
+
 
 #  APi manual case
 class BookListApiView(APIView):
@@ -31,6 +31,7 @@ class BookListApiView(APIView):
 #     queryset = Book.objects.all()
 #     serializer_class = BookSerializer
 
+
 class BookDetailApiView(APIView):
     def get(self, request, pk):
         try:
@@ -43,8 +44,6 @@ class BookDetailApiView(APIView):
             return Response(data)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
-
-
 
 
 #  Delete book => destroy api delete uchun ishlatiladi
@@ -61,7 +60,6 @@ class BookDeleteApiView(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
-
 
 
 #  Update book
@@ -83,11 +81,6 @@ class BookUpdateApiView(APIView):
 
             }
         )
-
-
-
-
-
 
 
 # Create book
