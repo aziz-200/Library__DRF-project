@@ -62,6 +62,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # new added
     'allauth.account.middleware.AccountMiddleware', # this
+    'allauth.account.middleware.AccountMiddleware', # this
 ]
 
 ROOT_URLCONF = 'library_project.urls'
