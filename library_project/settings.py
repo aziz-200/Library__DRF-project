@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount', # for gmail, facebook etc
     'dj_rest_auth.registration',
+    # for deployment UI
+    'whitenoise.runserver_nostatic',
 
     # Local apps
     'books',
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -62,9 +65,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # new added
     'allauth.account.middleware.AccountMiddleware', # this
-    'allauth.account.middleware.AccountMiddleware', # this
-]
 
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'library_project.urls'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
